@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlacnkJoki</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <style>
+        * 
+
+        {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f4f8;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background-color: #ffffff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 600;
+            color: #3498db;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 400;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #3498db;
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(135deg, #3498db, #8e44ad);
+            color: #ffffff;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease 0.5s forwards;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: #ffffff;
+            color: #3498db;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease 1s forwards;
+        }
+
+        .cta-button:hover {
+            background-color: #3498db;
+            color: #ffffff;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .features {
+            padding: 100px 0;
+            background-color: #ffffff;
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 50px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 30px;
+            background-color: #f0f4f8;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-item i {
+            font-size: 48px;
+            color: #3498db;
+            margin-bottom: 20px;
+        }
+
+        .feature-item h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .feature-item p {
+            font-size: 16px;
+            color: #666;
+        }
+
+        footer {
+            background-color: #333;
+            color: #ffffff;
+            text-align: center;
+            padding: 20px 0;
+        }
+        .showcase {
+    background-color: #f0f4f8;
+    padding: 100px 0;
+}
+
+.showcase h2 {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 50px;
+    color: #333;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.product-item {
+    background-color: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.product-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.product-item h3 {
+    font-size: 20px;
+    margin: 20px 0 10px;
+    padding: 0 20px;
+}
+
+.product-item p {
+    font-size: 14px;
+    color: #666;
+    padding: 0 20px 20px;
+}
+.testimonials {
+    background-color: #ffffff;
+    padding: 100px 0;
+}
+
+.testimonials h2 {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 50px;
+    color: #333;
+}
+
+.testimonial-slider {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+}
+
+.testimonial-item {
+    flex: 0 0 100%;
+    scroll-snap-align: start;
+    padding: 20px;
+    background-color: #f0f4f8;
+    border-radius: 10px;
+    margin-right: 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.testimonial-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.client-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    object-fit: cover;
+}
+
+.testimonial-text {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.client-name {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #3498db;
+}
+
+.client-position {
+    font-size: 14px;
+    color: #666;
+}
+
+@media (min-width: 768px) {
+    .testimonial-slider {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+        overflow-x: visible;
+    }
+
+    .testimonial-item {
+        margin-right: 0;
+    }
+}
+.cta {
+    background: linear-gradient(135deg, #3498db, #8e44ad);
+    color: #ffffff;
+    padding: 80px 0;
+    text-align: center;
+}
+
+.cta-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.cta h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    animation: fadeInUp 1s ease;
+}
+
+.cta p {
+    font-size: 18px;
+    margin-bottom: 40px;
+    animation: fadeInUp 1s ease 0.2s;
+    animation-fill-mode: both;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: #e74c3c;
+    color: #ffffff;
+    padding: 15px 40px;
+    border-radius: 50px;
+    font-size: 18px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    animation: fadeInUp 1s ease 0.4s;
+    animation-fill-mode: both;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-button:hover {
+    background-color: #c0392b;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.cta-button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.5);
+    opacity: 0;
+    border-radius: 100%;
+    transform: scale(1, 1) translate(-50%);
+    transform-origin: 50% 50%;
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(0, 0);
+        opacity: 1;
+    }
+    20% {
+        transform: scale(25, 25);
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: scale(40, 40);
+    }
+}
+
+.cta-button:focus:not(:active)::after {
+    animation: ripple 1s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .cta h2 {
+        font-size: 28px;
+    }
+
+    .cta p {
+        font-size: 16px;
+    }
+
+    .cta-button {
+        padding: 12px 30px;
+        font-size: 16px;
+    }
+}
+/* Base styles */
+body {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.container {
+    width: 100%;
+    padding: 0 15px;
+    margin: 0 auto;
+}
+
+/* Navigation */
+nav {
+    flex-direction: column;
+    align-items: center;
+}
+
+.nav-links {
+    margin-top: 20px;
+}
+
+.nav-links li {
+    margin: 10px 0;
+}
+
+/* Hero section */
+.hero {
+    padding: 60px 0;
+}
+
+.hero h1 {
+    font-size: 32px;
+}
+
+.hero p {
+    font-size: 16px;
+}
+
+/* Features section */
+.feature-grid {
+    grid-template-columns: 1fr;
+}
+
+/* Showcase section */
+.product-grid {
+    grid-template-columns: 1fr;
+}
+
+/* Testimonials section */
+.testimonial-slider {
+    flex-direction: column;
+}
+
+.testimonial-item {
+    margin-right: 0;
+    margin-bottom: 20px;
+}
+
+/* CTA section */
+.cta h2 {
+    font-size: 28px;
+}
+
+.cta p {
+    font-size: 16px;
+}
+
+.cta-button {
+    padding: 12px 30px;
+    font-size: 16px;
+}
+
+/* Media queries for larger screens */
+@media (min-width: 768px) {
+    .container {
+        max-width: 720px;
+    }
+
+    nav {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .nav-links {
+        margin-top: 0;
+    }
+
+    .nav-links li {
+        margin: 0 0 0 20px;
+    }
+
+    .hero h1 {
+        font-size: 48px;
+    }
+
+    .hero p {
+        font-size: 18px;
+    }
+
+    .feature-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .testimonial-slider {
+        flex-direction: row;
+    }
+
+    .testimonial-item {
+        margin-right: 20px;
+        margin-bottom: 0;
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        max-width: 960px;
+    }
+
+    .feature-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1140px;
+    }
+}
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.menu-toggle span {
+    width: 30px;
+    height: 3px;
+    background-color: #333;
+}
+
+@media (max-width: 767px) {
+    .menu-toggle {
+        display: flex;
+    }
+
+    .nav-links {
+        display: none;
+        width: 100%;
+    }
+
+    .nav-links.active {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+
+
+
+.social-share {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.share-buttons {
+  list-style-type: none;
+  padding: 0;
+}
+
+.share-buttons li {
+  display: inline-block;
+  margin: 0 5px;
+}
+
+.share-buttons a {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  line-height: 40px;
+  transition: background-color 0.3s ease;
+}
+
+.share-buttons a:hover {
+  background-color: #555;
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <button class="menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                
+                <div class="logo">BlacnkJoki</div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Welcome to BlacnkJoki</h1>
+            <p>Kami menyediakan layanan joki untuk kalian yang mageran</p>
+            <a href="#" class="cta-button">Klik Woy</a>
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <div class="container">
+            <h2>Our Features</h2>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <i class="fas fa-rocket"></i>
+                    <h3>Fast Performance</h3>
+                    <p>1 hari selsai coy</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Aman kok</h3>
+                    <p>Data dijamin save</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-cogs"></i>
+                    <h3>Ez Order</h3>
+                    <p>Mudah lah</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 BlacnkJoki All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
+    <script>
+        // Add smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add scroll reveal animation for feature items
+        const featureItems = document.querySelectorAll('.feature-item');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.5 });
+
+        featureItems.forEach(item => {
+            item.style.opacity = 0;
+            item.style.transform = 'translateY(20px)';
+            item.style.transition = 'all 0.5s ease';
+            observer.observe(item);
+        });
+        // Add animation for product items
+const productItems = document.querySelectorAll('.product-item');
+const productObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = 1;
+            entry.target.style.transform = 'translateY(0) scale(1)';
+        }
+    });
+}, { threshold: 0.1 });
+
+productItems.forEach(item => {
+    item.style.opacity = 0;
+    item.style.transform = 'translateY(20px) scale(0.9)';
+    item.style.transition = 'all 0.5s ease';
+    productObserver.observe(item);
+});
+// Add animation for testimonial items
+const testimonialItems = document.querySelectorAll('.testimonial-item');
+const testimonialObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = 1;
+            entry.target.style.transform = 'translateY(0)';
+        }
+    });
+}, { threshold: 0.1 });
+
+testimonialItems.forEach(item => {
+    item.style.opacity = 0;
+    item.style.transform = 'translateY(20px)';
+    item.style.transition = 'all 0.5s ease';
+    testimonialObserver.observe(item);
+});
+document.addEventListener('DOMContentLoaded', function() {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    menuToggle.addEventListener('click', function() {
+        navLinks.classList.toggle('active');
+    });
+});
+
+    </script>
+    <section id="showcase" class="showcase">
+        <div class="container">
+       
+            <h2>Our Products</h2>
+            <div class="product-grid">
+                <div class="product-item">
+                    <img src="https://via.placeholder.com/300x200" alt="Product 1">
+                    <h3>Product 1</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                
+                </div>
+                <div class="product-item">
+                    <img src="https://via.placeholder.com/300x200" alt="Product 2">
+                    <h3>Product 2</h3>
+                    <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                </div>
+                <div class="product-item">
+                    <img src="https://via.placeholder.com/300x200" alt="Product 3">
+                    <h3>Product 3</h3>
+                    <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+                </div>
+                <div class="product-item">
+                    <img src="https://via.placeholder.com/300x200" alt="Product 4">
+                    <h3>Product 4</h3>
+                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <h2>What Our Clients Say</h2>
+            <div class="testimonial-slider">
+                <div class="testimonial-item">
+                    <img src="https://via.placeholder.com/100" alt="Client 1" class="client-image">
+                    <p class="testimonial-text">"AwesomeCo has transformed our business. Their innovative solutions have helped us increase productivity by 200%."</p>
+                    <h4 class="client-name">John Doe</h4>
+                    <p class="client-position">CEO, Tech Innovators</p>
+                </div>
+                <div class="testimonial-item">
+                    <img src="https://via.placeholder.com/100" alt="Client 2" class="client-image">
+                    <p class="testimonial-text">"The team at AwesomeCo is incredibly talented and responsive. They've been a joy to work with on multiple projects."</p>
+                    <h4 class="client-name">Jane Smith</h4>
+                    <p class="client-position">Marketing Director, Global Brands</p>
+                </div>
+                <div class="testimonial-item">
+                    <img src="https://via.placeholder.com/100" alt="Client 3" class="client-image">
+                    <p class="testimonial-text">"I can't recommend AwesomeCo enough. Their attention to detail and customer service is unparalleled in the industry."</p>
+                    <h4 class="client-name">Mike Johnson</h4>
+                    <p class="client-position">CTO, Startup Ventures</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="cta" class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Transform Your Business?</h2>
+                <p>Join thousands of satisfied customers and take your company to the next level.</p>
+                <a href="#" class="cta-button">Get Started Now</a>
+            </div>
+        </div>
+    </section>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var lazyImages = [].slice.call(document.querySelectorAll("img.lazy"));
+    
+            if ("IntersectionObserver" in window) {
+                let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            let lazyImage = entry.target;
+                            lazyImage.src = lazyImage.dataset.src;
+                            lazyImage.classList.remove("lazy");
+                            lazyImageObserver.unobserve(lazyImage);
+                        }
+                    });
+                });
+    
+                lazyImages.forEach(function(lazyImage) {
+                    lazyImageObserver.observe(lazyImage);
+                });
+            } else {
+                // Fallback for browsers that don't support IntersectionObserver
+                let active = false;
+    
+                const lazyLoad = function() {
+                    if (active === false) {
+                        active = true;
+    
+                        setTimeout(function() {
+                            lazyImages.forEach(function(lazyImage) {
+                                if ((lazyImage.getBoundingClientRect().top <= window.innerHeight && lazyImage.getBoundingClientRect().bottom >= 0) && getComputedStyle(lazyImage).display !== "none") {
+                                    lazyImage.src = lazyImage.dataset.src;
+                                    lazyImage.classList.remove("lazy");
+    
+                                    lazyImages = lazyImages.filter(function(image) {
+                                        return image !== lazyImage;
+                                    });
+    
+                                    if (lazyImages.length === 0) {
+                                        document.removeEventListener("scroll", lazyLoad);
+                                        window.removeEventListener("resize", lazyLoad);
+                                        window.removeEventListener("orientationchange", lazyLoad);
+                                    }
+                                }
+                            });
+    
+                            active = false;
+                        }, 200);
+                    }
+                };
+    
+                document.addEventListener("scroll", lazyLoad);
+                window.addEventListener("resize", lazyLoad);
+                window.addEventListener("orientationchange", lazyLoad);
+            }
+        });
+    </script>
+    <div class="social-share">
+        <h3>Share This Page</h3>
+        <ul class="share-buttons">
+          <li><a href="https://www.facebook.com/profile.php?id=100077026124994" target="_blank" rel="noopener" aria-label="Share on Facebook"><i class="fab fa-facebook-f"></i></a></li>
+          <li><a href="https://twitter.com/intent/tweet?url=YOURURL&text=YOURTEXT" target="_blank" rel="noopener" aria-label="Share on Twitter"><i class="fab fa-twitter"></i></a></li>
+          <li><a href="https://www.linkedin.com/shareArticle?mini=true&url=YOURURL" target="_blank" rel="noopener" aria-label="Share on LinkedIn"><i class="fab fa-linkedin-in"></i></a></li>
+          <li><a href="mailto:?subject=I wanted you to see this site&body=Check out this site YOURURL" title="Share by Email" aria-label="Share by Email"><i class="fas fa-envelope"></i></a></li>
+        </ul>
+      </div>
+      
+</body>
+</html>
